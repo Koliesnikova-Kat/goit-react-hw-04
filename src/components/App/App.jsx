@@ -27,9 +27,7 @@ export default function App() {
         setError(false);
         setLoading(true);
         const results = await fetchedPictures(query, page);
-        setPictures((prev) =>
-          page === 1 ? results : [...prev, ...results]
-        );
+        setPictures((prev) => (page === 1 ? results : [...prev, ...results]));
       } catch {
         toast.error("Server is not responding!");
         setError(true);
@@ -69,7 +67,7 @@ export default function App() {
       {loading && <Loader />}
 
       {pictures.length > 0 && (
-        <ImageGallery items={pictures} onImageClick={openModal} />
+        <ImageGallery images={pictures} onImageClick={openModal} />
       )}
 
       {pictures.length > 0 && <LoadMoreBtn setPage={setPage} />}
@@ -77,7 +75,7 @@ export default function App() {
       {modalOpen && selectedImage && (
         <ImageModal
           isOpen={modalOpen}
-          onRequestClose={closeModal}
+          onClose={closeModal}
           image={selectedImage}
         />
       )}

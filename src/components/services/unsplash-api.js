@@ -11,6 +11,7 @@ export const fetchedPictures = async (query, page) => {
       query,
       page,
       per_page: 12,
+      orientation: "landscape",
       client_id: API_KEY,
     },
   });
